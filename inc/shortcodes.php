@@ -1,6 +1,7 @@
 <?php
 $contacts = array(
     'phone' => 'phone',
+    'fax' => 'fax',
     'email' => 'email',
     'address' => 'pin',
     'hours' => 'clock',
@@ -33,6 +34,7 @@ foreach ($contacts as $key => $icon) {
 
         $link = match ($key) {
             'phone' => "tel:$link",
+            'fax' => "fax:$link",
             'email' => "mailto:" . antispambot($link, 1),
             default => $link
         };
@@ -94,11 +96,12 @@ function contact_info($atts)
 
     $email = do_shortcode("[email icon='' office='$atts[office]']");
     $phone = do_shortcode("[phone icon='' office='$atts[office]']");
+    $fax = do_shortcode("[fax icon='' office='$atts[office]']");
     $hours = do_shortcode("[hours icon='' office='$atts[office]']");
     $address = do_shortcode("[address icon='' office='$atts[office]']");
 
     $header = "<div class='hstack align-items-center gap-3'>$icon$title</div>";
-    $body = "$email$phone$hours$address";
+    $body = "$email$phone$fax$hours$address";
 
     return "<div class='vstack gap-3 element-my'>$header$body</div>";
 }

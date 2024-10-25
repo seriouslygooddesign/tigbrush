@@ -63,7 +63,7 @@ select {
   background-size: 0.6em;
   background-repeat: no-repeat;
   background-position: right 0.5em center;
-  line-height: var(--input-height);
+  line-height: var(--lh-xs);
   &:disabled {
     opacity: 1;
   }

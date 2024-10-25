@@ -41,4 +41,4 @@ $after = $wrap ? "</$wrap_tag>" : null;
 if ($noopener_noreferrer) $attributes .= " rel='noopener noreferrer'";
 $label_start = $url ? "<a class='icon-label' $attributes>" : "<span class='icon-label'>";
 $label_end = $url ? "</a>" : "</span>";
-echo  "{$before}{$label_start}{$icon}" . esc_html($label) . "{$label_end}{$after}";
+echo  "{$before}{$label_start}{$icon}" . nl2br(esc_html($label)) . "{$label_end}{$after}";
