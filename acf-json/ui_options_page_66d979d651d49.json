@@ -1,0 +1,23 @@
+{
+    "key": "ui_options_page_66d979d651d49",
+    "title": "Product Options",
+    "active": true,
+    "menu_order": 0,
+    "page_title": "Product Options",
+    "menu_slug": "product-options",
+    "parent_slug": "edit.php?post_type=merchandise",
+    "advanced_configuration": 1,
+    "icon_url": "",
+    "menu_title": "Options",
+    "position": "",
+    "redirect": false,
+    "description": "",
+    "menu_icon": [],
+    "update_button": "Update",
+    "updated_message": "Options Updated",
+    "capability": "edit_posts",
+    "data_storage": "post_id",
+    "post_id": "merchandise-options",
+    "autoload": 0,
+    "modified": 1725529033
+}

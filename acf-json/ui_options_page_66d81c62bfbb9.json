@@ -1,0 +1,23 @@
+{
+    "key": "ui_options_page_66d81c62bfbb9",
+    "title": "Industry Options",
+    "active": true,
+    "menu_order": 0,
+    "page_title": "Industry Options",
+    "menu_slug": "industry-options",
+    "parent_slug": "edit.php?post_type=industry",
+    "advanced_configuration": 1,
+    "icon_url": "",
+    "menu_title": "Options",
+    "position": "",
+    "redirect": false,
+    "description": "",
+    "menu_icon": [],
+    "update_button": "Update",
+    "updated_message": "Options Updated",
+    "capability": "edit_posts",
+    "data_storage": "post_id",
+    "post_id": "industry-options",
+    "autoload": 0,
+    "modified": 1725439636
+}

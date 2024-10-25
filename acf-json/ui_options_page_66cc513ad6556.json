@@ -1,0 +1,23 @@
+{
+    "key": "ui_options_page_66cc513ad6556",
+    "title": "Office Options",
+    "active": true,
+    "menu_order": 0,
+    "page_title": "Office Options",
+    "menu_slug": "office-options",
+    "parent_slug": "edit.php?post_type=office",
+    "advanced_configuration": 1,
+    "icon_url": "",
+    "menu_title": "Options",
+    "position": "",
+    "redirect": false,
+    "description": "",
+    "menu_icon": [],
+    "update_button": "Update",
+    "updated_message": "Options Updated",
+    "capability": "edit_posts",
+    "data_storage": "post_id",
+    "post_id": "office-options",
+    "autoload": 0,
+    "modified": 1724666808
+}

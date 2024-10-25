@@ -1,0 +1,232 @@
+div.gform_wrapper.gravity-theme {
+  margin: var(--element-spacer) 0;
+
+  @include bp(md, max) {
+    input:not([type="radio"]):not([type="checkbox"]):not([type="image"]):not([type="file"]) {
+      min-height: var(--input-height);
+      line-height: inherit;
+    }
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="url"],
+  input[type="password"],
+  input[type="search"],
+  input[type="number"],
+  input[type="tel"],
+  input[type="range"],
+  input[type="date"],
+  input[type="month"],
+  input[type="week"],
+  input[type="time"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="color"],
+  textarea,
+  select {
+    font-size: var(--input-fs);
+    padding: 0 var(--input-px);
+  }
+
+  select[multiple],
+  textarea {
+    padding: var(--input-py) var(--input-px);
+  }
+
+  .gform_fields {
+    gap: var(--element-spacer);
+  }
+
+  .gsection {
+    border: none;
+    padding: 0;
+  }
+
+  .gsection_title {
+    margin-bottom: 0;
+  }
+
+  .gform_validation_errors {
+    display: none;
+    box-shadow: none;
+    border-radius: var(--border-radius);
+    margin: var(--element-spacer) 0;
+    background: var(--color-danger);
+    border: none;
+    > h2 {
+      font-size: 1em;
+      color: var(--color-white);
+      line-height: var(--lh-md);
+      font-weight: bold;
+    }
+  }
+
+  .gfield_required {
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: inherit;
+    color: var(--color-danger);
+  }
+
+  .text-white & {
+    .gfield_required {
+      color: var(--color-white);
+    }
+    .button:not(:hover) {
+      @include button--white;
+    }
+  }
+
+  .description,
+  .gfield_description,
+  .gsection_description,
+  .instruction {
+    font-size: var(--fs-xs);
+  }
+  .gfield_label {
+    margin: 0;
+    font-weight: bold;
+    font-size: var(--label-font-size);
+  }
+
+  .gchoice {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .gchoice_other_control[disabled] {
+    display: none;
+  }
+
+  .gfield_checkbox,
+  .gfield_radio {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacer-1);
+    label {
+      font-size: inherit;
+      max-width: none;
+      flex: 1 0 0%;
+    }
+  }
+
+  .gfield_radio input[type="text"] {
+    margin-top: var(--spacer-1);
+  }
+
+  .gform_ajax_spinner {
+    display: none !important;
+  }
+
+  .ginput_container_time {
+    min-width: 5rem;
+    max-width: 5rem;
+  }
+
+  .gform_footer,
+  .gform_page_footer {
+    padding: 0;
+    margin: var(--element-spacer) 0 0;
+    .button {
+      margin-bottom: 0;
+      white-space: normal;
+      width: 100%;
+    }
+  }
+
+  .gfield_validation_message,
+  .validation_message {
+    background: none;
+    padding: 0;
+    border: none;
+    margin: 0;
+  }
+
+  .gfield_error .gfield_repeater_cell label,
+  .gfield_error label,
+  .gfield_error legend,
+  .gfield_validation_message,
+  .validation_message,
+  [aria-invalid="true"] + label,
+  label + [aria-invalid="true"] {
+    color: var(--color-danger);
+  }
+
+  .gfield_error {
+    [aria-invalid="true"] {
+      border: var(--border-width) solid var(--color-danger);
+    }
+  }
+
+  .gfield_error legend {
+    display: contents;
+  }
+
+  .ginput_product_price,
+  .ginput_shipping_price {
+    color: inherit;
+    font-weight: bold;
+  }
+
+  .ginput_total {
+    font-weight: bold;
+    color: var(--color-primary);
+  }
+  .gf_progressbar_percentage {
+    background-color: var(--color-primary-light) !important;
+  }
+  .gf_progressbar {
+    background-color: var(--color-surface) !important;
+  }
+  .gf_progressbar_title {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: currentColor;
+  }
+  .gf_page_steps {
+    border: none;
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: auto;
+    gap: var(--border-width);
+    .gf_step {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      margin: 0;
+      &_active .gf_step_number,
+      &_completed .gf_step_number {
+        opacity: 1;
+      }
+      &:not(:last-child) {
+        .gf_step_number {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+      }
+      &:not(:first-child) {
+        .gf_step_number {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+      }
+    }
+    .gf_step_label {
+      padding: var(--element-spacer) var(--element-spacer) 0 0;
+      white-space: nowrap;
+    }
+    .gf_step_number {
+      width: 100%;
+      border: none;
+      height: 1.3rem;
+      background: var(--color-primary-light);
+      opacity: 0.4;
+      font-size: 0;
+      &::before {
+        content: none;
+      }
+    }
+  }
+}

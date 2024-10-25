@@ -1,0 +1,37 @@
+table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  tfoot,
+  tbody {
+    tr {
+      border-top: var(--border-width) solid var(--border-color);
+      &:first-child {
+        border: none;
+      }
+    }
+  }
+  thead tr:last-child {
+    border-bottom: calc(var(--border-width) * 2) solid var(--color-primary);
+  }
+  tfoot tr:first-child {
+    border-top: calc(var(--border-width) * 2) solid var(--color-primary);
+  }
+  td,
+  th {
+    padding: var(--table-py) var(--table-px) var(--table-py) 0;
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+}
+.responsive-table {
+  overflow-x: auto;
+  margin: var(--element-spacer);
+  @include bp(lg, max) {
+    font-size: var(--fs-sm);
+  }
+  table {
+    margin: 0;
+  }
+}

@@ -1,0 +1,66 @@
+body .is-form-style {
+    display: flex;
+    margin: 0 !important;
+    input.is-search-input {
+        min-height: var(--input-height);
+    }
+    button.is-search-submit {
+        height: var(--input-height);
+        width: var(--input-height);
+    }
+    input.is-search-submit,
+    .is-search-icon {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        padding: 0 !important;
+        width: var(--input-height);
+        height: var(--input-height);
+        background-color: transparent !important;
+    }
+    &.is-form-style-1.is-form-id-2072 .is-search-input:focus,
+    &.is-form-style-1.is-form-id-2072 .is-search-input:hover,
+    &.is-form-style-1.is-form-id-2072 .is-search-input,
+    &.is-form-style-2.is-form-id-2072 .is-search-input:focus,
+    &.is-form-style-2.is-form-id-2072 .is-search-input:hover,
+    &.is-form-style-2.is-form-id-2072 .is-search-input,
+    &.is-form-style-3.is-form-id-2072 .is-search-input:focus,
+    &.is-form-style-3.is-form-id-2072 .is-search-input:hover,
+    &.is-form-style-3.is-form-id-2072 .is-search-input,
+    &.is-form-id-2072 .is-search-input:focus,
+    &.is-form-id-2072 .is-search-input:hover,
+    &.is-form-id-2072 .is-search-input {
+        background-color: transparent !important;
+    }
+    &.is-form-id-2072 .is-search-submit:focus,
+    &.is-form-id-2072 .is-search-submit:hover,
+    &.is-form-id-2072 .is-search-submit,
+    &.is-form-id-2072 .is-search-icon {
+        background-color: transparent !important;
+    }
+}
+
+div.is-ajax-search-details,
+div.is-ajax-search-result {
+    margin-top: var(--element-spacer);
+    right: var(--container-spacer) !important;
+    background: var(--color-primary-lighten) !important;
+    left: initial !important;
+    @include bp(md, max) {
+        width: calc(100% - var(--container-spacer) * 3) !important;
+    }
+}
+#is-ajax-search-result-2072 .is-ajax-search-post {
+    .is-search-sections .meta,
+    .is-search-sections .meta > * {
+        margin: 0;
+    }
+    a {
+        text-transform: uppercase;
+        font-weight: 600;
+        &:hover {
+            color: var(--color-secondary) !important;
+            text-decoration: none;
+        }
+    }
+}

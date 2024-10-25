@@ -1,0 +1,173 @@
+:root {
+  /*
+  Global Colors
+  */
+
+  --h: 236;
+  --s: 56%;
+  --l: 28%;
+  --hsl: var(--h) var(--s) var(--l);
+
+  --color-primary: hsl(var(--hsl));
+  --color-primary-light: hsl(227, 26%, 52%);
+  --color-primary-lighten: hsl(204, 15%, 94%);
+  --color-primary-dark: hsl(var(--h), calc(var(--s) - 6%), calc(var(--l) - 3%));
+  --color-surface: hsl(var(--hsl) / 0.075);
+
+  --h-secondary: 353;
+  --s-secondary: 86%;
+  --l-secondary: 54%;
+  --hsl-secondary: var(--h-secondary) var(--s-secondary) var(--l-secondary);
+
+  --color-secondary: hsl(var(--hsl-secondary));
+  --color-secondary-dark: hsl(var(--h-secondary), calc(var(--s-secondary) - 16%), calc(var(--l-secondary) - 12%));
+
+  --hsl-dark: 240 7% 14%;
+  --hsl-white: 0 0% 100%;
+
+  --color-danger: #ec1f26;
+  --color-success: #0f834d;
+
+  --color-dark: hsl(var(--hsl-dark));
+  --color-white: hsl(var(--hsl-white));
+  --color-white-muted: hsl(var(--hsl-white) / 0.4);
+
+  /*
+  Typography
+  */
+  --ff-primary: "#{$font-family-primary}", sans-serif;
+  --lh-none: 1;
+  --lh-xs: 1.1;
+  --lh-sm: 1.25;
+  --lh-md: 1.65;
+
+  //Generate --h variables from h6 to h2
+  $min: 1.125rem;
+  $max: 1.25rem;
+  $min-scale: 1.125;
+  $max-scale: 1.27;
+  $i: 6;
+  @while $i >= 2 {
+    --h#{$i}: #{clamp-smart($min, $max)};
+    $min: $min * $min-scale;
+    $max: $max * $max-scale;
+    $i: $i - 1;
+  }
+  --h1: #{clamp-smart(2rem, 5rem)};
+
+  --fs-xs: 0.75em;
+  --fs-sm: 0.875em;
+  --fs-md: 1.125em;
+  --fs-lg: var(--h6);
+  --fs-xl: var(--h5);
+  --fs-2xl: var(--h4);
+
+  /*
+  Spacers
+  */
+  //generate spacers from abstracts/_variables.scss $spacers
+  @each $name, $value in $spacers {
+    --spacer-#{$name}: #{$value};
+  }
+
+  /*
+  Transitions
+  */
+  --transition-duration: 300ms;
+  --transition-timing-function: ease;
+  --transition: var(--transition-duration) var(--transition-timing-function);
+
+  --animate-transition: 500ms ease;
+  --animate-distance: #{clamp-smart(0.5rem, 1rem, 500px, 1920px)};
+
+  /*
+  Utilities
+  */
+  --shadow: 0 0 0.75rem 0 rgba(0, 0, 0, 0.1);
+
+  /*
+  Elements
+  */
+  --header-height: #{clamp-smart(3.5rem, 6.5rem, 768px, 1920px)};
+  --header-height-top: #{clamp-smart(1.5rem, 2.5rem, 768px, 1920px)};
+  --overlay-menu-height: #{clamp-smart(2.5rem, 3.5rem, 768px, 1920px)};
+  --full-header-height: calc(var(--header-height) + var(--header-height-top));
+  @include bp($overlay-menu-bp) {
+    --full-header-height: calc(var(--header-height) + var(--header-height-top) + var(--overlay-menu-height));
+  }
+
+  --text-color: hsl(var(--hsl));
+  --text-color-muted: hsl(var(--hsl) / 0.7);
+  --text-color-muted-white: hsl(var(--hsl-white) / 0.6);
+
+  --border-color: hsl(var(--hsl-dark) / 0.1);
+  --border-width: 2px;
+  --border-radius: 0;
+  --border: var(--border-width) solid var(--border-color);
+
+  --container-spacer: #{clamp-smart(1.125rem, 2.5rem)};
+  --container-width: calc(1440px + var(--container-spacer) * 2);
+
+  --link-color: var(--color-secondary);
+  --link-color-hover: var(--color-secondary-dark);
+
+  --input-border-color: var(--border-color);
+  --input-border-color-hover: hsl(var(--hsl-dark) / 0.4);
+  --input-border-color-focus: var(--color-secondary);
+  --input-border-width: var(--border-width);
+  --input-border-radius: var(--border-radius);
+  --input-background-color: transparent;
+  --input-height: #{clamp-smart(2.625rem, 3.125rem)};
+  --input-py: 0.75rem;
+  --input-px: 1rem;
+  --input-fs: 16px; //must be >= 16px to fix "iphone input focus zoom issue"
+  --input-choice-spacer: 0.3rem;
+
+  --button-color: var(--color-white);
+  --button-color-hover: var(--button-color);
+  --button-background-color: var(--color-secondary);
+  --button-background-color-hover: var(--color-secondary-dark);
+  --button-border-color: transparent;
+  --button-border-color-hover: transparent;
+  --button-border-width: var(--border-width);
+  --button-border-radius: var(--border-radius);
+  --button-height: var(--input-height);
+  --button-py: 0.25rem;
+  --button-px: 1.5em;
+  --button-fs: 0.95em;
+
+  --label-font-size: inherit;
+
+  --table-px: 0.5em;
+  --table-py: 0.7em;
+
+  --icon-color: currentColor;
+  --icon-size: 1.5em;
+  --icon-holder-radius: 0;
+  --icon-holder-size: var(--input-height);
+  --icon-holder-color: var(--color-primary);
+  --icon-holder-color-hover: var(--color-white);
+  --icon-holder-background-color: var(--color-surface);
+  --icon-holder-background-color-hover: var(--color-primary-dark);
+  --icon-filter: brightness(0) saturate(100%) invert(46%) sepia(18%) saturate(976%) hue-rotate(189deg) brightness(94%) contrast(87%);
+
+  --card-color: var(--text-color);
+  --card-background-color: var(--color-white);
+  --card-spacer: #{clamp-smart(1rem, 2rem)};
+  --card-radius: calc(var(--card-spacer) * 2);
+
+  --curtain-background-color: hsl(var(--hsl-dark) / 0.25);
+
+  --section-spacer: #{clamp-smart(3rem, 5.5rem)};
+
+  --element-spacer: #{clamp-smart(1rem, 1.125rem)};
+  --element-spacer-sm: calc(var(--element-spacer) / 2);
+
+  @if ($overlay-menu-bp) {
+    --overlay-menu-breakpoint: #{map-get($grid-breakpoints, $overlay-menu-bp)};
+  }
+  --overlay-menu-color: var(--text-white);
+  --overlay-menu-background-color: var(--color-primary);
+  --overlay-menu-slide-offset: 50%;
+  --overlay-menu-spacer-x: var(--container-spacer);
+}

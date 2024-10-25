@@ -1,0 +1,22 @@
+%heading-base {
+  font-weight: bold;
+  line-height: var(--lh-sm);
+  text-transform: uppercase;
+}
+
+$i: 6;
+@while $i >= 1 {
+  h#{$i},
+  .h#{$i} {
+    font-size: var(--h#{$i});
+    @extend %heading-base;
+    @if $i == 1 {
+      line-height: var(--lh-xs);
+    }
+    @if $i == 6 {
+      text-transform: initial;
+      font-weight: 600;
+    }
+  }
+  $i: $i - 1;
+}

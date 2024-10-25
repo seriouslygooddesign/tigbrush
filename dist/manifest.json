@@ -1,0 +1,20 @@
+{
+  "main.css": "/dist/main/main.css",
+  "main.js": "/dist/main/main.js",
+  "swiper.css": "/dist/swiper/swiper.css",
+  "swiper.js": "/dist/swiper/swiper.js",
+  "sprite.js": "/dist/sprite/sprite.js",
+  "admin.css": "/dist/admin/admin.css",
+  "admin.js": "/dist/admin/admin.js",
+  "popup.css": "/dist/popup/popup.css",
+  "popup.js": "/dist/popup/popup.js",
+  "main.js.map": "/dist/main/main.js.map",
+  "main.css.map": "/dist/main/main.css.map",
+  "swiper.css.map": "/dist/swiper/swiper.css.map",
+  "swiper.js.map": "/dist/swiper/swiper.js.map",
+  "sprite.js.map": "/dist/sprite/sprite.js.map",
+  "admin.js.map": "/dist/admin/admin.js.map",
+  "admin.css.map": "/dist/admin/admin.css.map",
+  "popup.css.map": "/dist/popup/popup.css.map",
+  "popup.js.map": "/dist/popup/popup.js.map"
+}

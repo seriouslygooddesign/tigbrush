@@ -1,0 +1,41 @@
+.card-post {
+  --card-post-background-color: var(--color-surface);
+  .text-white & {
+    --card-post-background-color: var(--color-primary-light);
+  }
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  border-bottom: var(--border-width) solid var(--color-surface);
+  height: 100%;
+  transition: background var(--transition);
+  &:hover {
+    background: var(--card-post-background-color);
+  }
+  &__img-holder {
+    overflow: hidden;
+    border-radius: var(--border-radius);
+  }
+  &__img {
+    will-change: scale;
+    transition: scale var(--transition);
+  }
+  &:hover &__img {
+    scale: 1.05;
+  }
+  &__content {
+    padding: var(--container-spacer);
+    display: flex;
+    flex-direction: column;
+    gap: var(--element-spacer);
+    * {
+      margin: 0;
+    }
+  }
+  &__title {
+    margin: 0;
+    font-weight: 600;
+    text-transform: capitalize;
+    transition: color var(--transition);
+  }
+}

@@ -1,0 +1,28 @@
+.country-selector.weglot-dropdown a,
+.country-selector.weglot-dropdown span {
+    line-height: var(--input-height);
+    height: var(--input-height);
+    border: 0;
+    padding-inline: var(--element-spacer-sm) !important;
+}
+
+.country-selector {
+    &.weglot-dropdown .wgcurrent {
+        border: 0;
+        &::after {
+            display: none;
+        }
+    }
+    &.weglot-dropdown {
+        background: transparent;
+    }
+    &.weglot-dropdown a,
+    &.weglot-dropdown span {
+        @include bp(sm, max) {
+            font-size: 0;
+            &::before {
+                margin-right: 0;
+            }
+        }
+    }
+}

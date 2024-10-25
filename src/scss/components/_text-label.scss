@@ -1,0 +1,11 @@
+.text-label {
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 1em;
+  font-weight: bold;
+  line-height: var(--lh-xs);
+  color: var(--color-primary);
+  .text-white & {
+    color: inherit;
+  }
+}

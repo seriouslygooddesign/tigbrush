@@ -1,0 +1,12 @@
+.social-icons {
+  @include reset-list;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0;
+  gap: var(--element-spacer-sm);
+  &__item {
+    margin: 0;
+    display: flex;
+  }
+}

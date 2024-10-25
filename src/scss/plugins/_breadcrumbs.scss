@@ -1,0 +1,11 @@
+.breadcrumbs {
+    text-transform: uppercase;
+    font-size: var(--fs-xs);
+    font-weight: bold;
+    a {
+        color: currentColor;
+    }
+    > span:not(:has(a)) {
+        color: var(--text-color-muted);
+    }
+}

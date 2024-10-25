@@ -1,0 +1,82 @@
+$themeColor: var(--color-primary);
+@import "swiper/scss";
+@import "../abstracts/mixins/mixins";
+@import "swiper/scss/effect-fade";
+@import "../abstracts/variables";
+@import "../abstracts/mixins/breakpoints-mixin";
+
+.swiper {
+  &--hero-slider {
+    .swiper-slide:not(.swiper-slide-active) {
+      opacity: 0 !important;
+    }
+    img {
+      @include bp(md, max) {
+        position: relative;
+        aspect-ratio: 4/3;
+        height: auto;
+      }
+    }
+  }
+  &--center &-wrapper {
+    align-items: center;
+  }
+  &--off-canvas {
+    overflow: visible;
+  }
+  &-pagination-fraction {
+    --_min-width: 4.5em;
+    min-width: var(--_min-width);
+    user-select: none;
+    text-align: center;
+  }
+
+  &-pagination--inside {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    translate: -50%;
+    z-index: 1;
+  }
+
+  &-pagination-bullets {
+    --_gap: 0.875rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--_gap);
+    margin: var(--element-spacer) 0;
+  }
+
+  &-pagination-bullet {
+    --_size: var(--border-width);
+    width: var(--container-spacer);
+    height: var(--_size);
+    border-radius: var(--_size);
+    transition: opacity var(--transition);
+    @include target-space(18px);
+    background-color: var(--color-primary-light);
+    .text-white & {
+      background-color: var(--color-white);
+    }
+    &:not(#{&}-active) {
+      background-color: var(--border-color);
+    }
+  }
+
+  &-pagination-clickable &-pagination-bullet {
+    cursor: pointer;
+  }
+
+  &-button-lock,
+  &-pagination-lock {
+    display: none;
+  }
+  &__controls {
+    .button--outline:not(:hover) {
+      --button-border-color: var(--color-surface);
+      --button-color: var(--color-primary-light);
+    }
+  }
+}

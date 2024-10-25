@@ -1,0 +1,78 @@
+@mixin custom-list($url, $color: currentColor) {
+  @include reset-list;
+  > li {
+    padding-left: calc(var(--icon-size) + var(--element-spacer-sm));
+    position: relative;
+    &::before {
+      @include mask-icon($url);
+      position: absolute;
+      color: $color;
+      left: 0;
+    }
+  }
+}
+
+ul,
+ol {
+  padding-left: 1.5em;
+  li {
+    margin-top: var(--element-spacer-sm);
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+ul {
+  list-style: disc;
+  li::marker {
+    color: var(--color-primary);
+  }
+}
+
+ol {
+  list-style: decimal;
+}
+
+li > ul,
+li > ol {
+  margin: var(--element-spacer-sm) 0 0;
+}
+
+dl {
+  display: flex;
+  flex-direction: column;
+}
+dt {
+  font-weight: bold;
+  margin-top: var(--element-spacer-sm);
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+dd {
+  margin: 0;
+  :first-child {
+    margin-top: 0;
+  }
+
+  :first-child {
+    margin-bottom: 0;
+  }
+}
+
+.file-list {
+  @include custom-list(
+    url("data:image/svg+xml,%3Csvg width='24' height='25' viewBox='0 0 24 25' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21 8.50012V21.4931C21.0009 21.6244 20.976 21.7547 20.9266 21.8763C20.8772 21.998 20.8043 22.1088 20.7121 22.2023C20.6199 22.2958 20.5101 22.3702 20.3892 22.4213C20.2682 22.4724 20.1383 22.4992 20.007 22.5001H3.993C3.72981 22.5001 3.47739 22.3956 3.2912 22.2096C3.105 22.0236 3.00027 21.7713 3 21.5081V3.49212C3 2.95512 3.449 2.50012 4.002 2.50012H14.997L21 8.50012ZM19 9.50012H14V4.50012H5V20.5001H19V9.50012Z' fill='%236573A4'/%3E%3C/svg%3E%0A"),
+    var(--text-color-muted)
+  );
+  > li {
+    margin-top: var(--element-spacer);
+  }
+  a {
+    color: currentColor;
+    text-underline-offset: 10%;
+    text-decoration-thickness: 1px;
+  }
+}

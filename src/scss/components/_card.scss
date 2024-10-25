@@ -1,0 +1,165 @@
+.card {
+  color: var(--card-color);
+  overflow: hidden;
+  display: flex;
+  height: 100%;
+  padding: var(--card-spacer);
+  flex-direction: column;
+  text-decoration: none;
+  gap: var(--card-spacer);
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 0.5em var(--element-spacer);
+    > * {
+      margin: 0;
+    }
+  }
+
+  &__icon {
+    align-self: baseline;
+    filter: var(--icon-filter);
+    transition: filter var(--transition);
+  }
+
+  &__content-holder {
+    height: 100%;
+    @include vstack;
+    gap: var(--element-spacer);
+  }
+
+  &__content {
+    width: 100%;
+    & > :first-child {
+      margin-top: 0;
+    }
+    & > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__collapsed {
+    display: flex;
+    flex-direction: column;
+    &-content {
+      overflow: hidden;
+      @include vstack;
+      gap: var(--element-spacer);
+      > :last-child {
+        margin-bottom: var(--element-spacer);
+      }
+    }
+    &-button {
+      display: flex;
+      align-items: center;
+      gap: var(--element-spacer-sm);
+      margin-top: 0.5em;
+      text-transform: uppercase;
+      cursor: pointer;
+      order: 1;
+      background: none;
+      font-size: 0.875rem;
+      border: none;
+      min-width: 8em;
+      width: min-content;
+      text-align: left;
+      font-weight: 600;
+      color: var(--text-color-muted);
+      transition: color var(--transition);
+      &:hover {
+        color: currentColor;
+      }
+      &::before {
+        content: "Show All";
+        .card__collapsed.active & {
+          content: "Hide All";
+        }
+      }
+    }
+    &-icon {
+      margin-left: auto;
+      .active & {
+        rotate: 180deg;
+      }
+    }
+  }
+  &__link {
+    margin-top: auto;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition:
+      color var(--transition),
+      background var(--transition);
+  }
+
+  &__img {
+    position: relative;
+    overflow: hidden;
+    transition: border-radius var(--transition);
+    border-bottom-right-radius: calc(var(--card-radius) - var(--card-spacer) / 2);
+  }
+
+  &--box {
+    $self: &;
+    outline: var(--border-width) solid hsl(225, 24%, 77%);
+    outline-offset: calc(var(--border-width) / 2 * -1);
+    transition: background var(--transition);
+    --card-radius: 0;
+    @at-root #{selector-append(a, &)} {
+      &:hover {
+        .text-white & {
+          --icon-filter: brightness(0) saturate(100%) invert(99%) sepia(5%) saturate(301%) hue-rotate(211deg) brightness(116%) contrast(86%);
+        }
+        background: var(--color-surface);
+      }
+    }
+  }
+
+  &--card {
+    $self: &;
+    background-color: var(--card-background-color);
+    border-radius: 0 0 var(--card-radius);
+
+    &.card--white {
+      --card-color: var(--text-color);
+      --card-background-color: var(--color-white);
+    }
+
+    &.card--dark {
+      --card-color: var(--color-white);
+      --card-background-color: var(--color-primary);
+      --text-color-muted: var(--text-color-muted-white);
+      --color-surface: var(--text-color-muted);
+    }
+
+    transition:
+      box-shadow var(--transition),
+      color var(--transition),
+      border-radius var(--transition),
+      background var(--transition);
+    @at-root #{selector-append(a, &)} {
+      &:hover {
+        border-radius: 0;
+        box-shadow: var(--shadow);
+        background: var(--color-primary-light);
+        color: var(--color-white);
+        --text-color-muted: var(--text-color-muted-white);
+        --card-border-color: var(--color-white);
+        --icon-filter: brightness(0) saturate(100%) invert(99%) sepia(5%) saturate(301%) hue-rotate(211deg) brightness(116%) contrast(86%);
+      }
+    }
+  }
+
+  &--card &__header:has(&__title) + &__content-holder,
+  &--card &__img + &__content-holder {
+    &::before {
+      content: "";
+      height: var(--border-width);
+      background: var(--card-border-color, var(--color-surface));
+      width: calc(100% + var(--card-spacer) * 2);
+      translate: calc(var(--card-spacer) * -1);
+      transition: background var(--transition);
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.bg {
+  &-primary {
+    background: var(--color-primary);
+    --color-surface: var(--color-white-muted);
+  }
+  &-primary-light {
+    background: var(--color-primary-light);
+  }
+  &-primary-dark {
+    background: var(--color-primary-dark);
+  }
+  &-secondary {
+    background: var(--color-secondary);
+  }
+  &-surface {
+    background: var(--color-surface);
+  }
+  &-dark {
+    background: var(--color-dark);
+  }
+}

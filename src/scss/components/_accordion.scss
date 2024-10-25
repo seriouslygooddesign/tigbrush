@@ -1,0 +1,70 @@
+.accordion {
+  --accent-color: var(--color-primary);
+
+  .text-white & {
+    --accent-color: inherit;
+  }
+
+  &__body {
+    transition: background var(--transition);
+    border-top: var(--border-width) solid var(--color-white);
+    .accordion__item:last-child & {
+      border-bottom: var(--border-width) solid var(--color-white);
+    }
+    &:hover {
+      background: var(--color-white-muted);
+    }
+
+    .active & {
+      background: var(--color-white);
+    }
+  }
+
+  &__layout {
+    display: grid;
+    grid-template-columns: var(--icon-size) 2fr;
+    @include bp(md) {
+      grid-template-columns: 1fr 2fr;
+    }
+    gap: var(--element-spacer);
+    > *:not(.accordion__icon) {
+      grid-column: 2;
+    }
+  }
+
+  &__header {
+    font-size: inherit;
+    margin: 0;
+  }
+
+  &__content {
+    overflow: hidden;
+    .accordion__item:not(:last-child).active &-holder {
+      margin-bottom: var(--element-spacer);
+    }
+    > :first-child {
+      margin-top: 0;
+    }
+  }
+
+  &__button {
+    background: none;
+    border: none;
+    width: 100%;
+    font-weight: bold;
+    padding: var(--spacer-4) 0;
+    transition: color var(--transition);
+    gap: var(--element-spacer);
+    cursor: pointer;
+    text-align: left;
+    color: inherit;
+  }
+
+  &__icon {
+    font-size: var(--fs-sm);
+    transition: rotate var(--transition);
+    .active & {
+      rotate: 45deg;
+    }
+  }
+}

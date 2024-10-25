@@ -1,0 +1,51 @@
+@import "main-menu";
+@import "overlay-menu";
+
+.main-header {
+  background: var(--color-white);
+  position: relative;
+  z-index: 1501;
+
+  &--sticky {
+    @include bp($overlay-menu-bp, max) {
+      position: sticky;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  &-space {
+    min-height: var(--header-height);
+  }
+  .custom-logo {
+    max-height: calc(var(--header-height) - var(--spacer-4));
+    width: auto;
+  }
+  &-top {
+    z-index: 1502;
+    display: flex;
+    background: var(--color-primary);
+    --header-height: var(--header-height-top);
+    --label-height: var(--header-height);
+
+    &__content {
+      background: var(--color-dark);
+      border-bottom-left-radius: calc(var(--spacer-5) / 2);
+      margin-left: auto;
+      width: auto;
+      padding-inline: var(--container-spacer);
+      @include bp($overlay-menu-bp) {
+        width: 80%;
+      }
+    }
+  }
+  &-bottom {
+    position: sticky;
+    top: 0;
+    z-index: 1502;
+    @include bp($overlay-menu-bp) {
+      --header-height: var(--overlay-menu-height);
+      z-index: 1500;
+    }
+  }
+}

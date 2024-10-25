@@ -1,0 +1,12 @@
+blockquote {
+  overflow: hidden;
+  padding: var(--card-spacer);
+  background-color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 0 var(--card-radius);
+  gap: var(--element-spacer);
+  > * {
+    margin: 0;
+  }
+}

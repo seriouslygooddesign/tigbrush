@@ -1,0 +1,83 @@
+@mixin overlay-menu {
+  .overlay-menu {
+    position: fixed;
+    inset: 0;
+    opacity: 0;
+    z-index: 1;
+    visibility: hidden;
+    overflow: hidden;
+    &.changing {
+      transition:
+        visibility var(--transition),
+        opacity var(--transition);
+    }
+    &.active,
+    &.changing {
+      visibility: visible;
+    }
+    &.active {
+      opacity: 1;
+    }
+
+    &__main {
+      color: var(--overlay-menu-color);
+      background: var(--overlay-menu-background-color);
+      width: 80%;
+      height: 100%;
+      margin-left: auto;
+      display: flex;
+      flex-direction: column;
+      max-width: 400px;
+      border-radius: var(--border-radius) 0 0 var(--border-radius);
+      transform: translateX(var(--overlay-menu-slide-offset));
+      transition: transform var(--transition);
+    }
+
+    &.active &__main {
+      transform: translateX(0);
+    }
+
+    &__body {
+      flex-grow: 1;
+      overflow-x: hidden;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      position: relative;
+      > * {
+        margin-bottom: 2em;
+      }
+      &:has(.active) {
+        overflow: hidden; //must have in case of vertical scrolling
+      }
+    }
+
+    &__curtain {
+      position: absolute;
+      inset: 0;
+      background-color: var(--curtain-background-color);
+    }
+
+    &__container {
+      padding-left: var(--overlay-menu-spacer-x);
+      padding-right: var(--overlay-menu-spacer-x);
+    }
+  }
+}
+
+@if ($overlay-menu-bp) {
+  @include bp($overlay-menu-bp, max) {
+    @include overlay-menu();
+  }
+  .hide-on-overlay-menu {
+    @include bp($overlay-menu-bp, max) {
+      display: none;
+    }
+  }
+  .show-on-overlay-menu {
+    @include bp($overlay-menu-bp) {
+      display: none;
+    }
+  }
+} @else {
+  @include overlay-menu();
+}

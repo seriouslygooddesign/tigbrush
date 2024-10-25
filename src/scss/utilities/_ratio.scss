@@ -1,0 +1,19 @@
+%ratio {
+  display: block;
+  position: relative;
+}
+
+.ratio {
+  &-16-9 {
+    @extend %ratio;
+    padding-bottom: 56.25%;
+  }
+  &-4-3 {
+    @extend %ratio;
+    padding-bottom: 75%;
+  }
+  &-1-1 {
+    @extend %ratio;
+    padding-bottom: 100%;
+  }
+}

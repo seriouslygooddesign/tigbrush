@@ -1,0 +1,17 @@
+.min-height {
+  &-sm {
+    min-height: clamp-smart(200px, 300px);
+  }
+  &-md {
+    min-height: clamp-smart(400px, 600px);
+  }
+  &-lg {
+    min-height: clamp-smart(500px, 800px);
+  }
+  &-full {
+    min-height: 100vh;
+    body:has(.main-header) & {
+      min-height: calc(100vh - var(--full-header-height));
+    }
+  }
+}
