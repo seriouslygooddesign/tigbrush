@@ -25,6 +25,7 @@
     --card-background-color: var(--color-primary);
     --card-color: var(--color-white);
     --color-surface: var(--text-color-muted);
+    --border: var(--border-width) solid var(--color-white-muted);
     color: var(--color-white);
     select {
       background-image: var(--icon-light);

@@ -13,10 +13,11 @@ $args = wp_parse_args($args, [
     'post__in' => $feed_type_select_posts ? get_sub_field('merchandise') : [],
     'taxonomy' => $feed_type_latest_by_category ? $taxonomy : null,
     'terms' => $feed_type_latest_by_category ? get_sub_field('categories') : null,
+    'card_scheme' => get_sub_field('card_scheme'),
     'card_scheme_white' => get_sub_field('card_scheme') === 'dark' ? ' text-white' : null,
 ]);
-
 extract($args);
+
 if ($feed_type_categories) {
     $posts = get_terms([
         'taxonomy' => $taxonomy,
@@ -79,11 +80,12 @@ get_template_part('components/block', 'start', $block_args); ?>
                     'link_url' => get_term_link($post),
                     'img_ratio' => 'ratio-1-1',
                     'title' => null,
+                    'card_scheme' => $card_scheme,
                     'content' => "<div class='vstack'>" . get_core_tag($post->name, 'html', '<h3 class="h5">', '</h3>') . get_core_tag($post->description, 'html', '<p>', '</p>') . "</div>",
                 ];
             } else {
                 setup_postdata($post);
-                $prices = (CAN_SHOW_PRIVATE_ELEMENT && ($field = get_field_object('prices')['sub_fields'])) ? $field : null;
+                $prices = (IS_PRIVATE_MODE_ENABLED && ($field = get_field_object('prices')['sub_fields'])) ? $field : null;
 
                 $prices_list = '';
                 if ($prices) {
@@ -105,7 +107,7 @@ get_template_part('components/block', 'start', $block_args); ?>
 
                 $content = "<div class='vstack gap-2'>" . get_core_tag(get_the_title(), 'html', '<h3 class="h5">', '</h3>');
                 $content .= $prices_list;
-                $content .= get_core_tag(strip_tags(apply_filters('the_content', get_the_excerpt($post))), 'html', "<span class='text-muted'>", "</span>");
+                $content .= get_core_tag(strip_tags(apply_filters('the_content', get_the_excerpt($post))), 'html', "<span class='text-muted '>", "</span>");
                 $content .= "</div>";
 
                 $card_args = $layout_row ? [] : [
@@ -113,6 +115,7 @@ get_template_part('components/block', 'start', $block_args); ?>
                     'title' => null,
                     'img_ratio' => 'ratio-1-1',
                     'content' => $content,
+                    'card_scheme' => $card_scheme,
                 ];
             }
             $card_col = $count > 3 ? 'col-md-3' : 'col-md-4';

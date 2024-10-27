@@ -6,30 +6,38 @@ $args = wp_parse_args($args,    [
     'height' => 'min-height-sm',
     'img_id' => !is_archive() ? (get_field('featured_image_landscape') ?? get_post_thumbnail_id()) : null,
     'img_lazy' => false,
+    'extra_content' => null,
 ]);
 extract($args);
-
 $block_name = CONTENT_BLOCK_CLASS . ' ' . CONTENT_BLOCK_MODIFIER . basename(__FILE__, '.php');
 $block_class = get_core_filter_implode([
     $block_name,
-    'text-white',
     'bg-primary-light',
     $height,
 ]);
 ?>
 <div class="<?= $block_class;  ?>">
     <div class="<?= CONTENT_BLOCK_CONTENT; ?> container section-py" data-animate>
-        <?php get_template_part('components/breadcrumbs'); ?>
-        <h1><?= esc_html(strip_tags($title)); ?></h1>
-        <?php if ($description !== 'none') {
-            echo $description === 'excerpt' ? get_the_excerpt() : $content;
-        } ?>
+        <div class="row">
+            <div class="col text-white">
+                <?php get_template_part('components/breadcrumbs'); ?>
+                <h1><?= esc_html(strip_tags($title)); ?></h1>
+                <?php if ($description !== 'none') {
+                    echo $description === 'excerpt' ? get_the_excerpt() : $content;
+                } ?>
+            </div>
+            <?php if (is_singular('merchandise') && $extra_content): ?>
+                <div class="col-md-5 offset-md-1">
+                    <?= $extra_content; ?>
+                </div>
+            <?php endif; ?>
+        </div>
     </div>
 </div>
+
 <?php
 if ($img_id) {
     echo "<div class='page-header-image'>";
-
     $img_args = [
         'curtain' => false,
         'img_id' => $img_id,

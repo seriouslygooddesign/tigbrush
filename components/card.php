@@ -29,7 +29,8 @@ if (str_contains($content, '</a>') && str_contains($collapsed_content, '</a>')) 
 }
 
 $card_tag = 'div';
-$card_attributes = "class='card card--$layout card--$card_scheme' $download";
+$card_scheme_class = $card_scheme ? " card--$card_scheme" : null;
+$card_attributes = "class='card card--$layout$card_scheme_class' $download";
 if ($link_url && !$collapsed_content) {
     $card_tag = 'a';
     $card_attributes .= sprintf(' href="%1$s"%2$s', esc_url($link_url), $link_target === '_blank' ? " target='_blank'" : null);

@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html <?php language_attributes(); ?>>
-
-<head>
-	<meta charset="<?php bloginfo('charset'); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<?php wp_head(); ?>
-</head>
-
 <?php
 $cta_link_shortcode = do_shortcode('[cta-link]');
 $social_icons_shortcode = do_shortcode('[social-icons]');
@@ -16,8 +7,17 @@ $logo = get_custom_logo();
 $main_menu_slug = 'main-menu-1';
 $has_main_menu = has_nav_menu($main_menu_slug);
 $has_overlay_menu = $has_main_menu;
-
 ?>
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+
+<head>
+	<meta charset="<?php bloginfo('charset'); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<?php wp_head(); ?>
+</head>
+
+
 
 <body <?php body_class('has-sticky-footer preload'); ?>>
 	<?php wp_body_open(); ?>

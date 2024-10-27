@@ -120,19 +120,6 @@
     $self: &;
     background-color: var(--card-background-color);
     border-radius: 0 0 var(--card-radius);
-
-    &.card--white {
-      --card-color: var(--text-color);
-      --card-background-color: var(--color-white);
-    }
-
-    &.card--dark {
-      --card-color: var(--color-white);
-      --card-background-color: var(--color-primary);
-      --text-color-muted: var(--text-color-muted-white);
-      --color-surface: var(--text-color-muted);
-    }
-
     transition:
       box-shadow var(--transition),
       color var(--transition),
@@ -140,14 +127,29 @@
       background var(--transition);
     @at-root #{selector-append(a, &)} {
       &:hover {
-        border-radius: 0;
         box-shadow: var(--shadow);
-        background: var(--color-primary-light);
-        color: var(--color-white);
-        --text-color-muted: var(--text-color-muted-white);
-        --card-border-color: var(--color-white);
-        --icon-filter: brightness(0) saturate(100%) invert(99%) sepia(5%) saturate(301%) hue-rotate(211deg) brightness(116%) contrast(86%);
+        border-radius: 0;
+        background: var(--card-background-color-hover);
+        &.card--dark {
+          --icon-filter: brightness(0) saturate(100%) invert(99%) sepia(5%) saturate(301%) hue-rotate(211deg) brightness(116%) contrast(86%);
+        }
       }
+    }
+    &.card--dark {
+      --card-color: var(--color-white);
+      --card-surface: var(--color-white);
+      --card-background-color: var(--color-primary);
+      --card-background-color-hover: hsl(var(--hsl) / 0.75);
+      --text-color-muted: var(--text-color-muted-white);
+      --color-surface: var(--text-color-muted);
+    }
+
+    &.card--white {
+      --card-color: var(--text-color);
+      --card-background-color: var(--color-white);
+      --card-background-color-hover: var(--color-primary-lighten);
+      --color-surface: hsl(var(--hsl) / 0.1);
+      --text-color-muted: hsl(var(--hsl) / 0.75);
     }
   }
 
