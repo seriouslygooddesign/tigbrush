@@ -155,5 +155,5 @@ require get_template_directory() . '/inc/filters.php';
 require get_template_directory() . '/inc/shortcodes.php';
 require get_template_directory() . '/inc/tiny-mce.php';
 require get_template_directory() . '/inc/gravity-forms.php';
-// require get_template_directory() . '/inc/image-validation.php';
+require get_template_directory() . '/inc/image-validation.php';
 require get_template_directory() . '/inc/popups.php';

@@ -5,8 +5,6 @@ function core_image_size_validation($file)
     $file_info = wp_check_filetype($file['name']);
     if (strpos($file_info['type'], 'image') === 0) {
 
-
-
         $max_file_size = 750; // kilobytes
         $max_width = 2048; // pixels
         $max_height = 1536; // pixels

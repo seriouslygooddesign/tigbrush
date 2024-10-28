@@ -8,11 +8,6 @@
   text-decoration: none;
   gap: var(--card-spacer);
 
-  iframe[src*="youtube.com/embed"] {
-    aspect-ratio: 1;
-    height: auto;
-  }
-
   &__header {
     display: flex;
     align-items: center;
@@ -168,5 +163,12 @@
       translate: calc(var(--card-spacer) * -1);
       transition: background var(--transition);
     }
+  }
+  iframe[src*="youtube.com/embed"],
+  iframe[data-src*="youtube.com/embed"],
+  .mejs-container,
+  .mejs-container video {
+    aspect-ratio: 1;
+    height: auto !important;
   }
 }

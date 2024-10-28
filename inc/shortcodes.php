@@ -34,7 +34,7 @@ foreach ($contacts as $key => $icon) {
 
         $link = match ($key) {
             'phone' => "tel:$link",
-            'fax' => "fax:$link",
+            'fax' => "tel:$link",
             'email' => "mailto:" . antispambot($link, 1),
             default => $link
         };

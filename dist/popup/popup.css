@@ -1,0 +1,46 @@
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/scss/components/_popup.scss ***!
+  \****************************************************************************************************************************************************************************************************************************/
+.main-popup {
+  --popup-spacer: var(--container-spacer);
+  --popup-max-width: 600px;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background-color: var(--curtain-background-color);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition), visibility var(--transition);
+}
+.main-popup.active {
+  opacity: 1;
+  visibility: visible;
+}
+.main-popup__dialog {
+  outline: none;
+  padding: var(--popup-spacer);
+}
+.main-popup__main {
+  border-radius: var(--border-radius);
+  background-color: var(--color-white);
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
+  max-width: var(--popup-max-width);
+}
+.main-popup__title-wrap {
+  padding: var(--popup-spacer) 0 0 var(--popup-spacer);
+}
+.main-popup__body {
+  padding: 0 var(--popup-spacer) var(--popup-spacer);
+}
+.main-popup__body :first-child {
+  margin-top: 0;
+}
+.main-popup__body :last-child {
+  margin-bottom: 0;
+}
+
+/*# sourceMappingURL=popup.css.map*/
