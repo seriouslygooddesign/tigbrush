@@ -8,6 +8,11 @@
   text-decoration: none;
   gap: var(--card-spacer);
 
+  iframe[src*="youtube.com/embed"] {
+    aspect-ratio: 1;
+    height: auto;
+  }
+
   &__header {
     display: flex;
     align-items: center;

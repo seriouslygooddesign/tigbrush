@@ -23,18 +23,23 @@ $args = wp_parse_args(
 extract($args);
 $filtered_icon = $filtered_icon ? 'card__icon' : null;
 $download = $download && !$collapsed_content ? 'download' : null;
-//disable link wrap if content contains link 
-if (str_contains($content, '</a>') && str_contains($collapsed_content, '</a>')) {
-    $link_title = $link_url = $link_target_blank = false;
-}
+$content_has_link  = str_contains($content, '</a>') || str_contains($collapsed_content, '</a>');
 
 $card_tag = 'div';
 $card_scheme_class = $card_scheme ? " card--$card_scheme" : null;
 $card_attributes = "class='card card--$layout$card_scheme_class' $download";
-if ($link_url && !$collapsed_content) {
+
+$link_attributes = null;
+
+if ($link_url) {
+    $link_attributes = sprintf(' href="%1$s"%2$s', esc_url($link_url), $link_target === '_blank' ? " target='_blank'" : null);
+}
+
+if (!$content_has_link && $link_url && !$collapsed_content) {
     $card_tag = 'a';
-    $card_attributes .= sprintf(' href="%1$s"%2$s', esc_url($link_url), $link_target === '_blank' ? " target='_blank'" : null);
+    $card_attributes .= $link_attributes;
 };
+
 echo "<$card_tag $card_attributes>";
 ?>
 <?php if ($image_id) : ?>
@@ -52,7 +57,7 @@ echo "<$card_tag $card_attributes>";
 <?php if ($content || $collapsed_content) : ?>
     <div class="card__content-holder">
         <div class="card__content">
-            <?php echo wp_kses_post($content); ?>
+            <?php echo $content; ?>
         </div>
         <?php if ($collapsed_content): ?>
             <div class="card__collapsed" data-accordion-item>
@@ -72,11 +77,16 @@ echo "<$card_tag $card_attributes>";
                 </div>
             </div>
         <?php endif ?>
-        <?php if ($link_title && $link_url && !$collapsed_content) : ?>
-            <div class="card__link<?= $layout === 'box' ? " button" : " text-muted" ?>">
-                <?= esc_html($link_title); ?>
-            </div>
-        <?php endif; ?>
+        <?php if ($link_title && $link_url && !$collapsed_content) :
+            $card_link_tag = "div";
+            $card_link_class = $layout === 'box' ? " button" : " text-muted";
+            $card_link_attributes = "class='card__link$card_link_class'";
+            if ($content_has_link) {
+                $card_link_tag = "a";
+                $card_link_attributes .= $link_attributes;
+            };
+            echo "<$card_link_tag $card_link_attributes>" . $link_title . "</$card_link_tag>";
+        endif; ?>
     </div>
 <?php endif; ?>
 <?= "</$card_tag>";
