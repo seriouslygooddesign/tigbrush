@@ -188,6 +188,7 @@
                             },
                             "choices": {
                                 "surface": "<span class=\"color-preview\" style=\"--color: var(--color-surface)\"><\/span> Surface",
+                                "primary-light": "<span class=\"color-preview\" style=\"--color: var(--color-primary-light)\"><\/span> Primary Light",
                                 "primary": "<span class=\"color-preview\" style=\"--color: var(--color-primary)\"><\/span> Dark",
                                 "custom": "Custom"
                             },
@@ -195,6 +196,7 @@
                             "return_format": "value",
                             "allow_null": 0,
                             "other_choice": 0,
+                            "allow_in_bindings": 1,
                             "layout": "horizontal",
                             "save_other_choice": 0
                         },
@@ -568,5 +570,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725878187
+    "modified": 1731235617
 }
