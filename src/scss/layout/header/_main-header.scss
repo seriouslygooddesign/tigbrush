@@ -26,7 +26,7 @@
     display: flex;
     background: var(--color-primary);
     --header-height: var(--header-height-top);
-    --label-height: var(--header-height);
+    --label-height: 0;
 
     &__content {
       background: var(--color-dark);

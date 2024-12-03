@@ -44,7 +44,6 @@ $has_secondary_menu = has_nav_menu($secondary_menu_slug);
                             'main_menu' => true, //Custom parameter for inc/main-menu.php
                             'theme_location' => $secondary_menu_slug,
                             'container' => false,
-
                         ]
                     ); ?>
                 </div>

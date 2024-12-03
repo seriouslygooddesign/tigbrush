@@ -30,7 +30,7 @@ while (have_posts()) :
         $extra_content .= "</div>";
         $extra_content .= "</div></div>";
     }
-    $image = get_core_image(get_field('featured_image_landscape') ?? get_post_thumbnail_id(), IMG_SIZE_2XL);
+    $image = !get_field('hide_featured_image') ? get_core_image(get_field('featured_image_landscape') ?? get_post_thumbnail_id(), IMG_SIZE_2XL) : null;
     $page_header_args = [
         'img_id' => false,
         'content' => $content,

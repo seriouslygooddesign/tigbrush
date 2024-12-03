@@ -17,8 +17,6 @@ $has_overlay_menu = $has_main_menu;
 	<?php wp_head(); ?>
 </head>
 
-
-
 <body <?php body_class('has-sticky-footer preload'); ?>>
 	<?php wp_body_open(); ?>
 

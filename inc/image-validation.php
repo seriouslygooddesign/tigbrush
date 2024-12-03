@@ -27,7 +27,7 @@ function core_image_size_validation($file)
 
         // If GIF image
         if ($file_info['ext'] === 'gif') {
-            $max_file_size = 2000;
+            $max_file_size = 5000;
         }
 
         // Check if file size exceeds maximum size
