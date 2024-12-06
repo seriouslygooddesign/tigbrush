@@ -118,7 +118,8 @@ get_template_part('components/block', 'start', $block_args); ?>
                     'card_scheme' => $card_scheme,
                 ];
             }
-            if (!$layout_row) echo "<div class='col-md-4$card_scheme_white' data-animate>";
+            $card_col = $count > 3 ? 'col-md-3' : 'col-md-4';
+            if (!$layout_row) echo "<div class='$card_col$card_scheme_white' data-animate>";
             get_template_part('components/card', $layout_row, $card_args);
             if (!$layout_row) echo '</div>';
         }

@@ -1,6 +1,6 @@
 <?php
 $args = wp_parse_args($args, [
-    'img_size' => IMG_SIZE_SM
+    'img_size' => IMG_SIZE_MD
 ]);
 extract($args);
 ?>
