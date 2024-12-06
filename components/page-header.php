@@ -15,13 +15,14 @@ $block_class = get_core_filter_implode([
     'bg-primary-light',
     $height,
 ]);
+$title_class = is_singular() ? "class='h2'" : '';
 ?>
 <div class="<?= $block_class;  ?>">
     <div class="<?= CONTENT_BLOCK_CONTENT; ?> container section-py" data-animate>
         <div class="row">
             <div class="col text-white">
                 <?php get_template_part('components/breadcrumbs'); ?>
-                <h1><?= esc_html(strip_tags($title)); ?></h1>
+                <h1 <?= $title_class; ?>><?= esc_html(strip_tags($title)); ?></h1>
                 <?php if ($description !== 'none') {
                     echo $description === 'excerpt' ? get_the_excerpt() : $content;
                 } ?>

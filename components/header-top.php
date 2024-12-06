@@ -24,9 +24,8 @@ $offices = get_field('offices', 'options');
                                 </div>
                             </div>
                         </div>
-                    <?php
-                    endforeach;
-                    ?>
+                    <?php endforeach; ?>
+                    <?php wp_reset_postdata(); ?>
                 </div>
             </div>
             <?php if ($has_secondary_menu) : ?>

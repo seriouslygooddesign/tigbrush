@@ -10,7 +10,7 @@ if (is_singular('industry')) {
 		];
 		get_template_part('components/page-header', null, $page_header_args);
 ?>
-		<div class="container-md section-py fs-one-column" data-animate>
+		<div class="container-md section-py fs-one-column overflow-hidden" data-animate>
 			<?php the_content(); ?>
 		</div>
 <?php
