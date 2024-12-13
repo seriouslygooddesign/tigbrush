@@ -106,7 +106,11 @@
   --border: var(--border-width) solid var(--border-color);
 
   --container-spacer: #{clamp-smart(1.125rem, 2.5rem)};
-  --container-width: calc(1440px + var(--container-spacer) * 2);
+  --container-width-value: 1100px;
+  @include bp(2xl) {
+    --container-width-value: 1440px;
+  }
+  --container-width: calc(var(--container-width-value) + var(--container-spacer) * 2);
 
   --link-color: var(--color-secondary);
   --link-color-hover: var(--color-secondary-dark);
