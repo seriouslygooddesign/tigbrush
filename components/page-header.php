@@ -19,7 +19,7 @@ $title_class = is_singular() ? "class='h2'" : '';
 ?>
 <div class="<?= $block_class;  ?>">
     <div class="<?= CONTENT_BLOCK_CONTENT; ?> container section-py" data-animate>
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col text-white">
                 <?php get_template_part('components/breadcrumbs'); ?>
                 <h1 <?= $title_class; ?>><?= esc_html(strip_tags($title)); ?></h1>
@@ -28,7 +28,7 @@ $title_class = is_singular() ? "class='h2'" : '';
                 } ?>
             </div>
             <?php if (is_singular('merchandise') && $extra_content): ?>
-                <div class="col-md-5 offset-md-1">
+                <div class="col-md-5 offset-md-1 d-flex justify-content-center">
                     <?= $extra_content; ?>
                 </div>
             <?php endif; ?>

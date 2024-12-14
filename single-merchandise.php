@@ -2,8 +2,9 @@
 get_header();
 while (have_posts()) :
     $content = get_core_tag(get_the_excerpt(), 'html', '<p class="h6">', '</p>');
+    $image = !get_field('hide_featured_image') ? get_core_image(get_field('featured_image_landscape'), IMG_SIZE_2XL) ?? null : null;
     $extra_content = '';
-    if (IS_PRIVATE_MODE_ENABLED) {
+    if (!IS_PRIVATE_MODE_ENABLED) {
         $prices = ($field = get_field_object('prices')['sub_fields']) ? $field : null;
 
         $prices_list = '';
@@ -23,14 +24,16 @@ while (have_posts()) :
             }
             $prices_list .= "</ul>";
         }
-        $extra_content .= "<div><div class='card card--card card--white'>";
+        $extra_content .= "<div class='col-12'><div class='card card--card card--white'>";
         $extra_content .= "<div class='card__content'>";
         $extra_content .= $prices_list;
         $extra_content .= do_shortcode(get_field('single_product_form', 'merchandise-options'));
         $extra_content .= "</div>";
         $extra_content .= "</div></div>";
+    } else if (!$image) {
+        $extra_content = get_core_tag(get_core_image(get_post_thumbnail_id(), IMG_SIZE_SM), null, "<div class='col-lg-6'>", "</div>");
     }
-    $image = !get_field('hide_featured_image') ? get_core_image(get_field('featured_image_landscape') ?? get_post_thumbnail_id(), IMG_SIZE_2XL) : null;
+
     $page_header_args = [
         'img_id' => false,
         'content' => $content,
