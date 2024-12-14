@@ -4,7 +4,7 @@ while (have_posts()) :
     $content = get_core_tag(get_the_excerpt(), 'html', '<p class="h6">', '</p>');
     $image = !get_field('hide_featured_image') ? get_core_image(get_field('featured_image_landscape'), IMG_SIZE_2XL) ?? null : null;
     $extra_content = '';
-    if (!IS_PRIVATE_MODE_ENABLED) {
+    if (IS_PRIVATE_MODE_ENABLED) {
         $prices = ($field = get_field_object('prices')['sub_fields']) ? $field : null;
 
         $prices_list = '';
