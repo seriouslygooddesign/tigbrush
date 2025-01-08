@@ -119,7 +119,7 @@ get_template_part('components/block', 'start', $block_args); ?>
                 ];
             }
 
-            if (!$layout_row) echo "<div class='col-md-3$card_scheme_white' data-animate>";
+            if (!$layout_row) echo "<div class='col-sm-6 col-lg-3$card_scheme_white' data-animate>";
             get_template_part('components/card', $layout_row, $card_args);
             if (!$layout_row) echo '</div>';
         }
