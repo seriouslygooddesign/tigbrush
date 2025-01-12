@@ -28,6 +28,7 @@ if ($feed_type_categories) {
     $posts_args = [
         'post_type' => $post_type,
         'posts_per_page' => $posts_per_page,
+        'order' => 'ASC',
     ];
 
     if ($post__in) {
