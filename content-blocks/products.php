@@ -22,6 +22,7 @@ if ($feed_type_categories) {
     $posts = get_terms([
         'taxonomy' => $taxonomy,
         'include' => get_sub_field('categories'),
+        'order' => 'DESC',
     ]);
 } else {
 
