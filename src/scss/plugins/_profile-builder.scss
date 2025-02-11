@@ -12,6 +12,9 @@
 .wppb-user-forms {
     > ul {
         @include reset-list;
+    }
+    
+    &#wppb-edit-user > ul {
         display: grid;
         gap: var(--element-spacer);
         @include bp(md) {
