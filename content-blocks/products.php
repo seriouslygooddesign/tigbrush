@@ -22,14 +22,12 @@ if ($feed_type_categories) {
     $posts = get_terms([
         'taxonomy' => $taxonomy,
         'include' => get_sub_field('categories'),
-        'order' => 'DESC',
     ]);
 } else {
 
     $posts_args = [
         'post_type' => $post_type,
         'posts_per_page' => $posts_per_page,
-        'order' => 'ASC',
     ];
 
     if ($post__in) {

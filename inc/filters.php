@@ -184,3 +184,7 @@ function core_custom_menu_order($menu_ord)
 }
 add_filter('custom_menu_order', 'core_custom_menu_order', 10, 1);
 add_filter('menu_order', 'core_custom_menu_order', 10, 1);
+
+
+//Remove inline css: img:is([sizes="auto" i], [sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+add_filter('wp_img_tag_add_auto_sizes', '__return_false');

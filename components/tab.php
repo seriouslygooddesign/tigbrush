@@ -18,5 +18,5 @@ if ($i === 1) {
 
 ?>
 <button type="button" id="tab-<?= esc_attr($unique_id); ?>" class="tabs__tab button<?= $class; ?>" role="tab" aria-selected="<?= $aria_selected; ?>" aria-controls="tabpanel-<?= esc_attr($unique_id); ?>" data-tab>
-    <?= esc_html($title); ?>
+    <?= esc_html($title) . get_core_icon('close', 'tabs__icon fs-sm'); ?>
 </button>
