@@ -66,9 +66,33 @@ get_template_part('components/block', 'start', $block_args); ?>
         <?php
         foreach ($posts as $post) {
             if ($feed_type_categories) {
-                $image = $layout_row
-                    ? get_field('featured_image_landscape', "term_$post->term_id") ?? get_field('featured_image', "term_$post->term_id")
-                    : get_field('featured_image', "term_$post->term_id") ?? get_field('featured_image_landscape', "term_$post->term_id");
+
+                $landscape = get_field('featured_image_landscape', "term_$post->term_id");
+                $portrait  = get_field('featured_image', "term_$post->term_id");
+
+                $primary   = $layout_row ? $landscape : $portrait;
+                $secondary = $layout_row ? $portrait : $landscape;
+
+                $image = $primary ?: $secondary;
+
+                if (!$image) {
+                    $first_post = get_posts([
+                        'post_type'      => 'merchandise',
+                        'posts_per_page' => 1,
+                        'tax_query'      => [
+                            [
+                                'taxonomy' => 'merchandise-category',
+                                'terms'    => $post->term_id,
+                                'field'    => 'term_id',
+                            ]
+                        ],
+                    ]);
+
+                    if (!empty($first_post)) {
+                        $first_post_id = $first_post[0]->ID;
+                        $image = get_post_thumbnail_id($first_post_id);
+                    }
+                }
 
                 $card_args = $layout_row ? [
                     'title' => $post->name,
@@ -119,7 +143,6 @@ get_template_part('components/block', 'start', $block_args); ?>
                     'card_scheme' => $card_scheme,
                 ];
             }
-
             if (!$layout_row) echo "<div class='col-sm-6 col-lg-3$card_scheme_white' data-animate>";
             get_template_part('components/card', $layout_row, $card_args);
             if (!$layout_row) echo '</div>';
