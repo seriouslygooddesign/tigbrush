@@ -34,7 +34,7 @@ $title_class = is_singular() ? "class='h2'" : '';
 <div class="<?= $block_class;  ?>">
     <div class="<?= CONTENT_BLOCK_CONTENT; ?> container section-py-half" data-animate>
         <div class="row align-items-center">
-            <div class="col text-white">
+            <div class="col text-white trim-margin">
                 <?php get_template_part('components/breadcrumbs'); ?>
                 <h1 <?= $title_class; ?>><?= esc_html(strip_tags($title)); ?></h1>
                 <?php if ($description !== 'none') {
