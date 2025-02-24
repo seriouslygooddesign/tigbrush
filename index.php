@@ -39,11 +39,6 @@ if (in_array($post_type, ['industry', 'merchandise']) && is_post_type_archive($p
 									<?php echo esc_html($category->name); ?>
 								</a>
 							</li>
-							<li class="menu-row__item">
-								<a href="<?php echo esc_url($category_link); ?>" class="menu-row__link<?= is_category($category->term_id) ? ' active' : null ?>">
-									<?php echo esc_html($category->name); ?>
-								</a>
-							</li>
 						<?php endforeach; ?>
 					</ul>
 				</div>
