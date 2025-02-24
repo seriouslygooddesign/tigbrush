@@ -183,3 +183,31 @@
 .trim-margin {
 	@include trim-margin;
 }
+
+.menu-row {
+	@include reset-list;
+	position: relative;
+	display: flex;
+	margin-bottom: calc(var(--section-spacer) / 2);
+	overflow-x: auto;
+	box-shadow: 0 calc(var(--border-width) * -1) inset var(--color-surface);
+
+	&__item {
+		margin: 0;
+	}
+	&__link {
+		display: block;
+		padding: var(--element-spacer-sm) var(--element-spacer);
+		text-decoration: none;
+		color: var(--color-surface);
+		font-weight: bold;
+		white-space: nowrap;
+		border-bottom: var(--border-width) solid transparent;
+		transition: border-color var(--transition), color var(--transition);
+		&.active,
+		&:hover {
+			border-color: currentColor;
+			color: inherit;
+		}
+	}
+}
