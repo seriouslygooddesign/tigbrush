@@ -184,31 +184,25 @@
 	@include trim-margin;
 }
 
-.menu-row {
+.category-menu {
 	@include reset-list;
 	position: relative;
 	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 	margin-bottom: calc(var(--section-spacer) / 2);
-	overflow-x: auto;
-	box-shadow: 0 calc(var(--border-width) * -1) inset var(--color-surface);
-
+	gap: var(--element-spacer-sm);
 	&__item {
 		margin: 0;
-		&:first-child {
-			margin-left: auto;
-		}
-		&:last-child {
-			margin-right: auto;
-		}
 	}
 	&__link {
 		display: block;
-		padding: var(--element-spacer-sm) var(--element-spacer);
+		padding: 0.2em 0.75em;
 		text-decoration: none;
 		color: var(--color-surface);
 		font-weight: bold;
 		white-space: nowrap;
-		border-bottom: var(--border-width) solid transparent;
+		border: var(--border-width) solid hsl(var(--hsl-white) / 0.3);
 		transition: border-color var(--transition), color var(--transition);
 		&.active,
 		&:hover {

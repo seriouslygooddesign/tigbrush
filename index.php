@@ -24,9 +24,9 @@ if (in_array($post_type, ['industry', 'merchandise']) && is_post_type_archive($p
 			?>
 
 				<div class="container-fluid">
-					<ul class="menu-row">
-						<li class="menu-row__item">
-							<a href="<?php echo esc_url($blog_page_link); ?>" class="menu-row__link<?= !is_category() ? ' active' : null; ?>">
+					<ul class="category-menu">
+						<li class="category-menu__item">
+							<a href="<?php echo esc_url($blog_page_link); ?>" class="category-menu__link<?= !is_category() ? ' active' : null; ?>">
 								All
 							</a>
 						</li>
@@ -34,8 +34,8 @@ if (in_array($post_type, ['industry', 'merchandise']) && is_post_type_archive($p
 						<?php foreach ($categories as $category):
 							$category_link = get_category_link($category->term_id);
 						?>
-							<li class="menu-row__item">
-								<a href="<?php echo esc_url($category_link); ?>" class="menu-row__link<?= is_category($category->term_id) ? ' active' : null ?>">
+							<li class="category-menu__item">
+								<a href="<?php echo esc_url($category_link); ?>" class="category-menu__link<?= is_category($category->term_id) ? ' active' : null ?>">
 									<?php echo esc_html($category->name); ?>
 								</a>
 							</li>
