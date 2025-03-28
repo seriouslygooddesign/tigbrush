@@ -9,6 +9,8 @@ $has_main_menu = has_nav_menu($main_menu_slug);
 $portal_menu_slug = 'portal-menu';
 $has_portal_menu_slug = has_nav_menu($portal_menu_slug);
 $has_overlay_menu = $has_main_menu;
+
+$portal_page_url = get_permalink(get_field('portal_page', 'options'));
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -34,16 +36,21 @@ $has_overlay_menu = $has_main_menu;
 
 				<?php if ($has_portal_menu_slug) : ?>
 					<div class="col-auto">
-						<?php
-						wp_nav_menu(
-							[
-								'main_menu' => true,
-								'theme_location' => $portal_menu_slug,
-								'container' => false,
-								'menu_class' => 'main-menu--portal'
-							]
-						);
-						?>
+						<div class="dropdown portal" data-dropdown>
+							<a href="<?= esc_url($portal_page_url) ?>" data-dropdown-toggler class="button">Portal <?= CAN_SHOW_ELEMENT ? get_core_icon('plus-sm', 'main-menu__icon main-menu__icon--dropdown') : null ?></a>
+							<?php
+							if (CAN_SHOW_ELEMENT) {
+								wp_nav_menu(
+									[
+										'main_menu' => false,
+										'theme_location' => $portal_menu_slug,
+										'container' => false,
+										'menu_class' => 'dropdown__menu'
+									]
+								);
+							}
+							?>
+						</div>
 					</div>
 				<?php endif; ?>
 

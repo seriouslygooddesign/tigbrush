@@ -17,7 +17,7 @@ define('MAIN_MENU', ['main-menu-1' => 'Primary Menu', 'main-menu-2' => 'Secondar
 
 define('IS_CURRENT_USER_ROLE_ADMINISTRATOR', current_user_can('manage_options'));
 define('IS_CURRENT_USER_ROLE_INTERMEDIARY', in_array('intermediary', (array) $current_user->roles));
-define('CAN_SHOW_ELEMENT', !IS_CURRENT_USER_ROLE_ADMINISTRATOR ? IS_CURRENT_USER_ROLE_INTERMEDIARY : true);
+define('CAN_SHOW_ELEMENT', IS_CURRENT_USER_ROLE_ADMINISTRATOR ? true : IS_CURRENT_USER_ROLE_INTERMEDIARY);
 
 
 function is_wppb_private_website()
