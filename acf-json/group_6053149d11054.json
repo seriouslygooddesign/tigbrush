@@ -238,8 +238,8 @@
             "delay": 0
         },
         {
-            "key": "field_671650da04a5b",
-            "label": "Site Options",
+            "key": "field_67e168be1f722",
+            "label": "Portal Settings",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -256,11 +256,11 @@
             "selected": 0
         },
         {
-            "key": "field_671650ff04a5c",
-            "label": "Private Mode",
-            "name": "private_mode",
+            "key": "field_67e168d31f723",
+            "label": "Portal Page",
+            "name": "portal_page",
             "aria-label": "",
-            "type": "true_false",
+            "type": "post_object",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -269,12 +269,45 @@
                 "class": "",
                 "id": ""
             },
-            "message": "",
-            "default_value": 0,
+            "post_type": [
+                "page"
+            ],
+            "post_status": "",
+            "taxonomy": "",
+            "return_format": "id",
+            "multiple": 0,
+            "allow_null": 0,
             "allow_in_bindings": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
+            "bidirectional": 0,
+            "ui": 1,
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_67e16c38cfd36",
+            "label": "Portal Login Page",
+            "name": "portal_login_page",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "post_status": "",
+            "taxonomy": "",
+            "return_format": "object",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "bidirectional": 0,
+            "ui": 1,
+            "bidirectional_target": []
         }
     ],
     "location": [
@@ -295,5 +328,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1733233195
+    "modified": 1742826621
 }

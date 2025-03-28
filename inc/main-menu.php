@@ -117,3 +117,107 @@ function custom_wp_nav_menu_objects($items, $args)
     }
     return $items;
 }
+
+function generate_portal_dropdown($sorted_menu_items, $args)
+{
+    // We affect only the menu with location 'portal-menu'
+    if ($args->theme_location !== 'portal-menu') {
+        return $sorted_menu_items;
+    }
+
+    // If user is not logged in, remove child items
+    if (!is_user_logged_in()) {
+        $filtered_menu_items = array();
+        foreach ($sorted_menu_items as $item) {
+            // Keep only top-level items
+            if ($item->menu_item_parent == 0) {
+                // Remove 'menu-item-has-children' class if present
+                $item->classes = array_diff($item->classes, array('menu-item-has-children'));
+                $filtered_menu_items[] = $item;
+            }
+        }
+        return $filtered_menu_items;
+    }
+
+    // If user is logged in, find the last top-level item
+    $parent_id = 0;
+    foreach ($sorted_menu_items as $item) {
+        // If this is a top-level item, remember its ID
+        if ($item->menu_item_parent == 0) {
+            $parent_id = $item->ID;
+        }
+    }
+
+    if ($parent_id) {
+        // Create a new menu item object for the "Logout" link
+        $logout_item = new stdClass();
+        $logout_item->ID = 999999;
+        $logout_item->db_id = 999999;
+        $logout_item->menu_item_parent = $parent_id; // Make it a child of the last top-level item
+        $logout_item->type = 'custom';
+        $logout_item->object = 'custom';
+        $logout_item->object_id = 999999;
+        $logout_item->title = 'Logout';
+        $logout_item->url = wp_logout_url(home_url());
+        $logout_item->classes = array('menu-item--footer');
+        $logout_item->xfn = '';
+        $logout_item->target = '';
+        $logout_item->attr_title = '';
+        $logout_item->description = '';
+        $logout_item->type_label = 'Custom Link';
+        $logout_item->menu_order = 999999; // Large number so it appears last
+
+        // These properties help avoid "Undefined property" notices
+        $logout_item->current = false;
+        $logout_item->current_item_ancestor = false;
+        $logout_item->current_item_parent = false;
+        $logout_item->post_type = 'nav_menu_item';
+
+        $sorted_menu_items[] = $logout_item;
+    }
+
+    return $sorted_menu_items;
+}
+add_filter('wp_nav_menu_objects', 'generate_portal_dropdown', 10, 2);
+
+function portal_menu_restrict_parents($menu_id, $menu_item_db_id, $args)
+{
+    // Get the menu object
+    $menu_object = wp_get_nav_menu_object($menu_id);
+
+    // Check if it's the 'portal-menu' menu
+    if ($menu_object && $menu_object->slug === 'portal-menu') {
+        // Get parent ID from the POST data
+        $parent_id = isset($_POST['menu-item-parent-id'][$menu_item_db_id])
+            ? (int) $_POST['menu-item-parent-id'][$menu_item_db_id]
+            : 0;
+
+        // If this item is top-level
+        if ($parent_id === 0) {
+            // Get all existing items in the menu
+            $items = wp_get_nav_menu_items($menu_id);
+
+            if ($items) {
+                $top_level_count = 0;
+
+                foreach ($items as $item) {
+                    if ($item->menu_item_parent == 0 && $item->ID != $menu_item_db_id) {
+                        $top_level_count++;
+                    }
+                }
+
+                if ($top_level_count >= 1) {
+                    remove_action('wp_update_nav_menu_item', 'portal_menu_restrict_parents', 10);
+
+                    // Delete the menu item
+                    wp_delete_post($menu_item_db_id, true);
+
+                    add_action('admin_notices', function () {
+                        echo '<div class="error"><p>You cannot add more than one top-level menu item to Portal Menu!</p></div>';
+                    });
+                }
+            }
+        }
+    }
+}
+add_action('wp_update_nav_menu_item', 'portal_menu_restrict_parents', 10, 3);

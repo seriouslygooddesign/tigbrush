@@ -72,6 +72,20 @@ function get_core_container_width()
     }
 }
 
+//Block Settings
+function get_core_block_settings()
+{
+    $block_settings = get_core_settings('block_settings');
+    $output = [];
+    if ($block_settings && $block_settings['enable'] === true) {
+        $output = [
+            'id' => $block_settings['block_id'],
+            'title' => $block_settings['block_title'],
+        ];
+    }
+    return $output;
+}
+
 //Height
 function get_core_height()
 {

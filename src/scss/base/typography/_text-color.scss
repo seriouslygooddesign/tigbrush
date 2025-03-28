@@ -1,34 +1,35 @@
 .text {
-  &-primary {
-    color: var(--color-primary);
-  }
-  &-secondary {
-    color: var(--color-secondary);
-  }
-  &-muted {
-    color: var(--text-color-muted);
-    --icon-color: var(--text-color-muted);
-  }
+	&-primary {
+		color: var(--color-primary);
+	}
+	&-secondary {
+		color: var(--color-secondary);
+	}
+	&-muted {
+		color: var(--text-color-muted);
+		--icon-color: var(--text-color-muted);
+	}
 
-  &-white {
-    --border-color: var(--text-color-muted);
-    --text-color-muted: var(--color-white-muted);
-    --input-border-color: var(--color-white-muted);
-    --input-border-color-hover: var(--color-white);
-    --input-border-color-focus: var(--color-white);
-    --link-color: currentColor;
-    --link-color-hover: currentColor;
-    --icon-holder-color: var(--color-white);
-    --icon-holder-color-hover: var(--color-primary);
-    --icon-holder-background-color: var(--color-surface);
-    --icon-holder-background-color-hover: var(--color-white);
-    --card-background-color: var(--color-primary);
-    --card-color: var(--color-white);
-    --color-surface: var(--text-color-muted);
-    --border: var(--border-width) solid var(--color-white-muted);
-    color: var(--color-white);
-    select {
-      background-image: var(--icon-light);
-    }
-  }
+	&-white {
+		--border-color: var(--text-color-muted);
+		--text-color-muted: var(--color-white-muted);
+		--text-color: var(--color-white);
+		--input-border-color: var(--color-white-muted);
+		--input-border-color-hover: var(--color-white);
+		--input-border-color-focus: var(--color-white);
+		--link-color: currentColor;
+		--link-color-hover: currentColor;
+		--icon-holder-color: var(--color-white);
+		--icon-holder-color-hover: var(--color-primary);
+		--icon-holder-background-color: var(--color-surface);
+		--icon-holder-background-color-hover: var(--color-white);
+		--card-background-color: var(--color-primary);
+		--card-color: var(--color-white);
+		--color-surface: var(--text-color-muted);
+		--border: var(--border-width) solid var(--color-white-muted);
+		color: var(--color-white);
+		select {
+			background-image: var(--icon-light);
+		}
+	}
 }

@@ -29,7 +29,7 @@ $content_class = get_core_filter_implode([
     $container
 ]);
 
-$block_id = get_sub_field('block_id');
+$block_id = get_core_block_settings()['id'] ?? null;
 $id = $block_id ? " id='$block_id'" : null;
 ?>
 <div<?= $id; ?> class="<?= $outer_class ?>">

@@ -94,6 +94,7 @@ function custom_gallery($output, $attr)
         }
 
         $swiper_parameters = json_encode($swiper_parameters);
+
         $output = "<div class='swiper swiper--center' data-swiper='$swiper_parameters'><div class='swiper-wrapper'>";
 
         foreach ($images as $image) {

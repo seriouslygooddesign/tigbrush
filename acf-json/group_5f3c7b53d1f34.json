@@ -529,14 +529,14 @@
                     "min": "",
                     "max": ""
                 },
-                "layout_678e712f64478": {
-                    "key": "layout_678e712f64478",
-                    "name": "product-media",
-                    "label": "Product Media",
+                "layout_67e13edf31907": {
+                    "key": "layout_67e13edf31907",
+                    "name": "portal",
+                    "label": "Portal",
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_678e71366447b",
+                            "key": "field_67e13ee73190a",
                             "label": "",
                             "name": "",
                             "aria-label": "",
@@ -550,7 +550,39 @@
                                 "id": ""
                             },
                             "clone": [
-                                "group_678e70b059190"
+                                "group_67e13d9ecc08d"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_67e56946733e7": {
+                    "key": "layout_67e56946733e7",
+                    "name": "anchor-links",
+                    "label": "Anchor Links",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_67e56952733ea",
+                            "label": "",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_67e568149aaee"
                             ],
                             "display": "seamless",
                             "layout": "block",
@@ -616,6 +648,20 @@
                 "operator": "==",
                 "value": "merchandise-category"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "marketing-asset"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "price-list"
+            }
         ]
     ],
     "menu_order": 0,
@@ -627,5 +673,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1737542673
+    "modified": 1743100031
 }

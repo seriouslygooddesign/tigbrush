@@ -128,7 +128,6 @@ function site_login()
 {
     $output = '';
     if (!is_user_logged_in()) {
-        $output .= "<div class='element-my text-center'>" . get_custom_logo() . "</div>";
         $output .= '<div class="text-white text-center"><br>';
         $output .= '<h1 class="h3">Distributor Portal</h1>';
         $output .= '<p>Login to your account</p>';

@@ -24,7 +24,11 @@ $thumbs_parameters = [
 ?>
 <div class='swiper swiper--center swiper--display' data-swiper='<?= json_encode($swiper_parameters) ?>'>
     <div class='swiper-wrapper'>
-        <?php foreach ($images as $image) : ?>
+        <?php foreach ($images as $image) :
+            if (!is_array($image)) {
+                continue;
+            }
+        ?>
             <div class='swiper-slide text-center'>
                 <?php
                 if ($image['type'] === 'video') :
@@ -32,11 +36,13 @@ $thumbs_parameters = [
                 else :
                     echo get_core_image($image['ID'], IMG_SIZE_LG);
                 endif; ?>
-                <div class="swiper__controls">
-                    <a class="button button--square button--outline element-my-sm" href="<?php echo esc_url($image['url']); ?>" aria-label="Download" download="">
-                        <?= get_core_icon('download') ?>
-                    </a>
-                </div>
+                <?php if ($image['url']): ?>
+                    <div class="swiper__controls">
+                        <a class="button button--square button--outline element-my-sm" href="<?php echo esc_url($image['url']); ?>" aria-label="Download" download="">
+                            <?= get_core_icon('download') ?>
+                        </a>
+                    </div>
+                <?php endif; ?>
             </div>
         <?php endforeach; ?>
     </div>
@@ -46,6 +52,9 @@ $thumbs_parameters = [
 <div thumbsSlider="" class="element-my swiper swiper-<?= $slider_id ?>" data-swiper='<?= json_encode($thumbs_parameters) ?>'>
     <div class="swiper-wrapper">
         <?php foreach ($images as $image) :
+            if (!is_array($image)) {
+                continue;
+            }
             $image_id = $image['type'] === 'video' ? get_field('video_poster', $image["ID"]) : $image["ID"]
         ?>
             <div class='swiper-slide text-center'>

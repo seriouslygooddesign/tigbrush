@@ -8,7 +8,7 @@ import { videoAutoplay } from "./modules/video-autoplay";
 import { preload } from "./modules/preload";
 import { pdfLinks } from "./modules/pdf-links";
 import { dropdown } from "./modules/dropdown";
-import { currencySelector } from "./modules/currency-selector";
+import { sectionScroll } from "./modules/scroll-section";
 
 overlayMenu();
 
@@ -26,4 +26,4 @@ accordion();
 
 tabs();
 
-currencySelector();
+sectionScroll();

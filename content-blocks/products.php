@@ -109,28 +109,8 @@ get_template_part('components/block', 'start', $block_args); ?>
                 ];
             } else {
                 setup_postdata($post);
-                $prices = (IS_PRIVATE_MODE_ENABLED && ($field = get_field_object('prices')['sub_fields'])) ? $field : null;
-
-                $prices_list = '';
-                if ($prices) {
-                    $prices_list .= "<ul class='currency-list'>";
-                    $i = 0;
-                    foreach ($prices as $price) {
-                        $price_name = $price['name'];
-                        $price_field = get_field('prices')[$price_name];
-                        if ($price_field) {
-                            $active_class = $i === 0 ? " active" : null;
-                            $prices_list .= "<li class='currency-list__item$active_class' data-price='$price_name'>";
-                            $prices_list .= "<span class='fs-lg'>$price[prepend]" . get_field('prices')[$price_name] . "</span> <sup>INC. GST</sup>";
-                            $prices_list .= "</li>";
-                        }
-                        $i++;
-                    }
-                    $prices_list .= "</ul>";
-                }
 
                 $content = "<div class='vstack gap-2'>" . get_core_tag(get_the_title(), 'html', '<h3 class="h5">', '</h3>');
-                $content .= $prices_list;
                 $content .= get_core_tag(strip_tags(apply_filters('the_content', get_the_excerpt($post))), 'html', "<span class='text-muted '>", "</span>");
                 $content .= "</div>";
 

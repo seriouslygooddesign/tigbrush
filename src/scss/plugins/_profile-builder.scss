@@ -1,49 +1,51 @@
 #wppb-no-other-users-to-edit {
-    display: none;
+	display: none;
 }
 
 .content-box {
-    .login-register-lost-password,
-    .login-remember {
-        text-align: center;
-    }
+	.login-register-lost-password,
+	.login-remember {
+		text-align: center;
+	}
 }
 
 .wppb-user-forms {
-    > ul {
-        @include reset-list;
-    }
-    
-    &#wppb-edit-user > ul {
-        display: grid;
-        gap: var(--element-spacer);
-        @include bp(md) {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
-    li {
-        margin: 0;
-    }
-    .login-submit .button {
-        width: 100%;
-    }
-    .wppb-toggle-pw {
-        @include button;
-        @include button--outline;
-        padding: 0;
-        min-width: var(--button-height);
-        border-left: none;
-        --button-border-color: var(--input-border-color);
-    }
-    li:has(input + .wppb-toggle-pw),
-    .wppb-form-field:has(input + .wppb-toggle-pw) {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        label {
-            grid-column: 1/-1;
-        }
-    }
-    li:not(:has(label)) {
-        grid-column: 1/-1;
-    }
+	> ul {
+		@include reset-list;
+	}
+	.wppb-password-field-container {
+		display: flex;
+	}
+	&#wppb-edit-user > ul {
+		display: grid;
+		gap: var(--element-spacer);
+		@include bp(md) {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+	li {
+		margin: 0;
+	}
+	.login-submit .button {
+		width: 100%;
+	}
+	.wppb-toggle-pw {
+		@include button;
+		@include button--outline;
+		padding: 0;
+		min-width: var(--button-height);
+		border-left: none;
+		--button-border-color: var(--input-border-color);
+	}
+	li:has(input + .wppb-toggle-pw),
+	.wppb-form-field:has(input + .wppb-toggle-pw) {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		label {
+			grid-column: 1/-1;
+		}
+	}
+	li:not(:has(label)) {
+		grid-column: 1/-1;
+	}
 }

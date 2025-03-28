@@ -1,11 +1,13 @@
 <?php
 get_header();
-if (is_singular('industry')) {
+$post_type = get_post_type();
+if (in_array($post_type, ['industry', 'merchandise', 'marketing-asset', 'price-list'])) {
 	get_template_part('components/content-blocks');
 } else {
 	while (have_posts()) :
 		the_post();
 		$page_header_args = [
+			'img_id' => get_post_thumbnail_id(),
 			'content' => get_post_type() === 'post' ? "<p>" . get_the_date() . "</p>" : null
 		];
 		get_template_part('components/page-header', null, $page_header_args);

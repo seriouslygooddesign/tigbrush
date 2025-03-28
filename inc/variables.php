@@ -12,11 +12,12 @@ define('IMG_SIZE_XL', 'large');
 define('IMG_SIZE_2XL', '1536x1536');
 define('IMG_SIZE_3XL', '2048x2048');
 
-define('MAIN_MENU', ['main-menu-1' => 'Primary Menu', 'main-menu-2' => 'Secondary Menu']); //Add more in array for more main menus
+define('MAIN_MENU', ['main-menu-1' => 'Primary Menu', 'main-menu-2' => 'Secondary Menu', 'portal-menu' => 'Portal Menu']); //Add more in array for more main menus
 
-define('IS_PRIVATE_MODE_ENABLED', get_field('private_mode', 'options'));
-define('IS_PRIVATE_WEBSITE_ENABLED', function_exists('is_wppb_private_website') && is_wppb_private_website());
-define('CAN_SHOW_PRIVATE_ELEMENT', IS_PRIVATE_MODE_ENABLED ? !IS_PRIVATE_WEBSITE_ENABLED || is_user_logged_in() : true);
+
+define('IS_CURRENT_USER_ROLE_ADMINISTRATOR', current_user_can('manage_options'));
+define('IS_CURRENT_USER_ROLE_INTERMEDIARY', in_array('intermediary', (array) $current_user->roles));
+define('CAN_SHOW_ELEMENT', !IS_CURRENT_USER_ROLE_ADMINISTRATOR ? IS_CURRENT_USER_ROLE_INTERMEDIARY : true);
 
 
 function is_wppb_private_website()
